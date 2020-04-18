@@ -52,6 +52,38 @@ if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
 
 /* LISTÁZÁS KEZDETE */
 
+$sql = "SELECT * FROM quiz";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0)
+{
+    while($row = mysqli_fetch_assoc($result))
+    {
+       
+        echo "<table>".
+        "<tr>".
+          "<td>".$row['kerdes']."</td>".
+          "<td>".$row['valasz_A']."</td>".
+          "<td>".$row['valasz_B']."</td>".
+          "<td>".$row['valasz_C']."</td>".
+          "<td>".$row['valasz_D']."</td>".
+        "</tr>".
+        "</table>";
+        echo "<br>";       
+    }   
+        
+}
+else
+{
+    echo "Nincs adat";
+}
+
+/* FELVÉTEL KEZDETE */
+
+
+/* FELVÉTEL VÉGE */
+
+?>
+
 /* LISTÁZÁS VÉGE */
 
 ?>
