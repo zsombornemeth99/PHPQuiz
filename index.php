@@ -216,20 +216,26 @@ if (mysqli_num_rows($result) > 0)
     echo "<table><tr><th>Kérdés</th><th>A</th><th>B</th><th>C</th><th>D</th><th>Törlés</th></tr>";
     while($row = mysqli_fetch_assoc($result))
     {
-        echo "<tr>".
-          "<td>".$row['kerdes']."</td>".
-          "<td>".$row['valasz_A']."</td>".
-          "<td>".$row['valasz_B']."</td>".
-          "<td>".$row['valasz_C']."</td>".
-          "<td>".$row['valasz_D']."</td>".
-          "<td>"?> <form method="POST">
-          <input type="hidden" name="input_id" value="<?php echo $row['kerdes_id']; ?>">
-          <input type="hidden" name="action" value="cmd_delete">
-          <input type="submit" value="Törlés">
-          </form>
-          <?php
-          echo "</td>".
-        "</tr>";   
+        echo "<tr>"; ?>
+          <td><?php echo $row['kerdes']; ?></td>
+          <td id='<?php echo 'valaszA'.$row['kerdes_id']; ?>' style="cursor: pointer;" onclick="helyesE('<?php echo $row['valasz_A']; ?>', '<?php echo $row['helyes']; ?>', '<?php echo 'valaszA'.$row['kerdes_id']; ?>')"><?php echo $row['valasz_A']; ?></td>
+          <td id='<?php echo 'valaszB'.$row['kerdes_id']; ?>' style="cursor: pointer;" onclick="helyesE('<?php echo $row['valasz_B']; ?>', '<?php echo $row['helyes']; ?>', '<?php echo 'valaszB'.$row['kerdes_id']; ?>')"><?php echo $row['valasz_B']; ?></td>
+          <td id='<?php echo 'valaszC'.$row['kerdes_id']; ?>' style="cursor: pointer;" onclick="helyesE('<?php echo $row['valasz_C']; ?>', '<?php echo $row['helyes']; ?>', '<?php echo 'valaszC'.$row['kerdes_id']; ?>')"><?php echo $row['valasz_C']; ?></td>
+          <td id='<?php echo 'valaszD'.$row['kerdes_id']; ?>' style="cursor: pointer;" onclick="helyesE('<?php echo $row['valasz_D']; ?>', '<?php echo $row['helyes']; ?>', '<?php echo 'valaszD'.$row['kerdes_id']; ?>')"><?php echo $row['valasz_D']; ?></td>
+            <script>
+                function helyesE(valasz, helyesvalasz, id) {
+                    if (valasz == helyesvalasz) {
+                        document.getElementById(id).style.backgroundColor = "green";
+                        document.getElementById(id).style.color = "white";
+                    } else {
+                        document.getElementById(id).style.backgroundColor = "red";
+                        document.getElementById(id).style.color = "white";
+                    }
+                    setTimeout(function(){ document.getElementById(id).style.backgroundColor = "white"; }, 500);
+                    setTimeout(function(){ document.getElementById(id).style.color = "black"; }, 500);
+                }
+            </script> <?php  
+        echo "</tr>";
     }   
     echo "</table>";
 }
