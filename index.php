@@ -7,6 +7,10 @@
             border-collapse: collapse;
             text-align: center;
         }
+        td {
+            width: 10%;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -41,7 +45,7 @@ if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
     !empty($_POST["input_b"]) &&
     !empty($_POST["input_c"]) &&
     !empty($_POST["input_d"]) &&
-    !empty($_POST["input_helyes"]) &&) {
+    !empty($_POST["input_helyes"])) {
         $sql = "INSERT quiz (kerdes, valasz_A, valasz_B, valasz_C, valasz_D, helyes) 
         VALUES ('".$_POST["input_kerdes"]."',
                 '".$_POST["input_a"]."'),
@@ -68,20 +72,18 @@ $sql = "SELECT * FROM quiz";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0)
 {
+    echo "<table>";
     while($row = mysqli_fetch_assoc($result))
     {
-       
-        echo "<table>".
-        "<tr>".
+        echo "<tr>".
           "<td>".$row['kerdes']."</td>".
           "<td>".$row['valasz_A']."</td>".
           "<td>".$row['valasz_B']."</td>".
           "<td>".$row['valasz_C']."</td>".
           "<td>".$row['valasz_D']."</td>".
-        "</tr>".
-        "</table>";
-        echo "<br>";       
+        "</tr>";   
     }   
+    echo "</table>";
         
 }
 else
