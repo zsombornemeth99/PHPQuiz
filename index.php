@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table, tr, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
 <form method="POST">
     <input type="text" name="input_kerdes" placeholder="Kérdés"><br>
     <input type="text" name="input_a" placeholder="'A' válasz"><br>
@@ -82,8 +94,9 @@ else
 
 /* FELVÉTEL VÉGE */
 
-?>
 
 /* LISTÁZÁS VÉGE */
 
 ?>
+</body>
+</html>
