@@ -49,10 +49,10 @@ if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
     !empty($_POST["input_helyes"])) {
         $sql = "INSERT quiz (kerdes, valasz_A, valasz_B, valasz_C, valasz_D, helyes) 
         VALUES ('".$_POST["input_kerdes"]."',
-                '".$_POST["input_a"]."'),
-                '".$_POST["input_b"]."'),
-                '".$_POST["input_c"]."'),
-                '".$_POST["input_d"]."'),
+                '".$_POST["input_a"]."',
+                '".$_POST["input_b"]."',
+                '".$_POST["input_c"]."',
+                '".$_POST["input_d"]."',
                 '".$_POST["input_helyes"]."')";
         if (mysqli_query($conn, $sql)) {
             echo "Sikeres adatfelvétel!";
