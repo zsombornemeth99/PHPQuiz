@@ -51,8 +51,8 @@ if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
 
 /* FELVÉTEL VÉGE */
 
+
 /* LISTÁZÁS KEZDETE */
 
 /* LISTÁZÁS VÉGE */
-
 ?>
