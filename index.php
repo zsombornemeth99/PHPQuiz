@@ -47,17 +47,38 @@ if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
     !empty($_POST["input_c"]) &&
     !empty($_POST["input_d"]) &&
     !empty($_POST["input_helyes"])) {
-        $sql = "INSERT quiz (kerdes, valasz_A, valasz_B, valasz_C, valasz_D, helyes) 
-        VALUES ('".$_POST["input_kerdes"]."',
-                '".$_POST["input_a"]."',
-                '".$_POST["input_b"]."',
-                '".$_POST["input_c"]."',
-                '".$_POST["input_d"]."',
-                '".$_POST["input_helyes"]."')";
-        if (mysqli_query($conn, $sql)) {
-            echo "Sikeres adatfelvétel!";
+        $mennyiHasonlit = 0;
+        $ugyanolyan = 0;
+        $kerdes = array($_POST["input_a"], $_POST["input_b"], $_POST["input_c"], $_POST["input_d"]);
+        for ($i = 0; $i < count($kerdes); $i++) {
+            if ($kerdes[$i] == $_POST["input_helyes"]) {
+                $mennyiHasonlit++;
+            }
+            for ($j = 0; $j < $i; $j++) {
+                if ($kerdes[$i] == $kerdes[$j]) {
+                    $ugyanolyan++;
+                }
+            }
+        }
+        if ($mennyiHasonlit == 1 && $ugyanolyan == 0) {
+            $sql = "INSERT quiz (kerdes, valasz_A, valasz_B, valasz_C, valasz_D, helyes) 
+            VALUES ('".$_POST["input_kerdes"]."',
+                    '".$_POST["input_a"]."',
+                    '".$_POST["input_b"]."',
+                    '".$_POST["input_c"]."',
+                    '".$_POST["input_d"]."',
+                    '".$_POST["input_helyes"]."')";
+            if (mysqli_query($conn, $sql)) {
+                echo "Sikeres adatfelvétel!";
+            } else {
+                echo "Sikertelen adatfelvétel!";
+            }
+        } else if ($mennyiHasonlit == 0) {
+            echo "A helyes válaszra egy válaszlehetőség sem hasonlít!";
+        } else if ($mennyiHasonlit > 1) {
+            echo "A válaszra csak egy válaszlehetőség hasonlíthat!";
         } else {
-            echo "Sikertelen adatfelvétel!";
+            echo "Két ugyanolyan válasz nem lehet!";
         }
     }
     else {
