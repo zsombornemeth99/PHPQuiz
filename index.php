@@ -18,9 +18,9 @@
 <form method="POST">
     <input type="text" name="input_kerdes" placeholder="Kérdés"><br>
     <input type="text" name="input_a" placeholder="'A' válasz"><br>
-    <input type="text" name="input_b" placeholder="'A' válasz"><br>
-    <input type="text" name="input_c" placeholder="'A' válasz"><br>
-    <input type="text" name="input_d" placeholder="'A' válasz"><br>
+    <input type="text" name="input_b" placeholder="'B' válasz"><br>
+    <input type="text" name="input_c" placeholder="'C' válasz"><br>
+    <input type="text" name="input_d" placeholder="'D' válasz"><br>
     <input type="text" name="input_helyes" placeholder="Helyes válasz"><br>
     <input type="hidden" name="action" value="cmd_insert">
     <input type="submit" value="Felvétel">
