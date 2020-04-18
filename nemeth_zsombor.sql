@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2020. Ápr 18. 11:16
--- Kiszolgáló verziója: 10.4.11-MariaDB
--- PHP verzió: 7.4.1
+-- Gép: 127.0.0.1:3306
+-- Létrehozás ideje: 2020. Ápr 18. 09:18
+-- Kiszolgáló verziója: 5.7.23
+-- PHP verzió: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Adatbázis: `nemeth_zsombor`
 --
+CREATE DATABASE IF NOT EXISTS `nemeth_zsombor` DEFAULT CHARACTER SET utf8 COLLATE utf8_hungarian_ci;
+USE `nemeth_zsombor`;
 
 -- --------------------------------------------------------
 
@@ -28,14 +30,16 @@ SET time_zone = "+00:00";
 -- Tábla szerkezet ehhez a táblához `quiz`
 --
 
-CREATE TABLE `quiz` (
-  `kerdes_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `quiz`;
+CREATE TABLE IF NOT EXISTS `quiz` (
+  `kerdes_id` int(11) NOT NULL AUTO_INCREMENT,
   `kerdes` text COLLATE utf8_hungarian_ci NOT NULL,
   `valasz_A` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
   `valasz_B` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
   `valasz_C` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
-  `valasz_D` varchar(512) COLLATE utf8_hungarian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
+  `valasz_D` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
+  PRIMARY KEY (`kerdes_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
 --
 -- A tábla adatainak kiíratása `quiz`
@@ -45,26 +49,6 @@ INSERT INTO `quiz` (`kerdes_id`, `kerdes`, `valasz_A`, `valasz_B`, `valasz_C`, `
 (1, 'Mi a fényerősség SI mértékegysége?', 'kandela', 'lumen', 'lux', 'farad'),
 (2, 'Ki dolgozta ki a kvantumelméletet?', 'Werner Heisenberg', 'Erwin Schrödinger', 'Max Planck', 'Max Born'),
 (3, 'Hányas számrendszer a bináris számrendszer?', 'tizes', 'hetes', 'tizenkettes', 'kettes');
-
---
--- Indexek a kiírt táblákhoz
---
-
---
--- A tábla indexei `quiz`
---
-ALTER TABLE `quiz`
-  ADD PRIMARY KEY (`kerdes_id`);
-
---
--- A kiírt táblák AUTO_INCREMENT értéke
---
-
---
--- AUTO_INCREMENT a táblához `quiz`
---
-ALTER TABLE `quiz`
-  MODIFY `kerdes_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
