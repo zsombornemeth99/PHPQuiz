@@ -3,7 +3,7 @@
 <head>
     <title>Quiz</title>
     <style>
-        table, tr, td{
+        table, th, tr, td{
             border: 1px solid black;
             border-collapse: collapse;
             text-align: center;
@@ -73,7 +73,7 @@ $sql = "SELECT * FROM quiz";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0)
 {
-    echo "<table>";
+    echo "<table><th><td>Kérdés</td><td>A</td><td>B</td><td>C</td><td>D</td></th>";
     while($row = mysqli_fetch_assoc($result))
     {
         echo "<tr>".
