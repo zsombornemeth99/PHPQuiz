@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Quiz</title>
     <style>
         table, tr, td{
             border: 1px solid black;
