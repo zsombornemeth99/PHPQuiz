@@ -8,7 +8,7 @@
             border-collapse: collapse;
             text-align: center;
         }
-        td {
+        td, th {
             width: 10%;
             height: 50px;
         }
