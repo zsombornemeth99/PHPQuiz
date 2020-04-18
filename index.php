@@ -73,7 +73,7 @@ $sql = "SELECT * FROM quiz";
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0)
 {
-    echo "<table><th><td>Kérdés</td><td>A</td><td>B</td><td>C</td><td>D</td></th>";
+    echo "<table><tr><th>Kérdés</th><th>A</th><th>B</th><th>C</th><th>D</th></tr>";
     while($row = mysqli_fetch_assoc($result))
     {
         echo "<tr>".
