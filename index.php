@@ -12,7 +12,33 @@ $servername = "localhost";
     }
     mysqli_query($conn,"SET CHARACTER SET 'utf8'");
 
-/* FELVÉTEL KEZDETE */
+/* FELVÉTEL  KEZDETE */
+
+if (isset($_POST["action"]) && $_POST["action"] == "cmd_insert") {
+    if (!empty($_POST["input_kerdes"]) &&
+    !empty($_POST["input_a"]) &&
+    !empty($_POST["input_b"]) &&
+    !empty($_POST["input_c"]) &&
+    !empty($_POST["input_d"]) &&
+    !empty($_POST["input_helyes"]) &&) {
+        $sql = "INSERT quiz (kerdes, valasz_A, valasz_B, valasz_C, valasz_D, helyes) 
+        VALUES ('".$_POST["input_kerdes"]."',
+                '".$_POST["input_a"]."'),
+                '".$_POST["input_b"]."'),
+                '".$_POST["input_c"]."'),
+                '".$_POST["input_d"]."'),
+                '".$_POST["input_helyes"]."')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Sikeres adatfelvétel!";
+        } else {
+            echo "Sikertelen adatfelvétel!";
+        }
+    }
+    else {
+        echo "Valami nincs kitöltve!";
+    }
+}
+
 ?>
 <form method="POST">
     <input type="text" name="input_kerdes" placeholder="Kérdés"><br>
