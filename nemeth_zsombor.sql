@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1:3306
--- Létrehozás ideje: 2020. Ápr 18. 09:18
+-- Létrehozás ideje: 2020. Ápr 18. 09:28
 -- Kiszolgáló verziója: 5.7.23
 -- PHP verzió: 7.2.10
 
@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `valasz_B` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
   `valasz_C` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
   `valasz_D` varchar(512) COLLATE utf8_hungarian_ci NOT NULL,
+  `helyes` varchar(255) COLLATE utf8_hungarian_ci NOT NULL,
   PRIMARY KEY (`kerdes_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
 
@@ -45,10 +46,10 @@ CREATE TABLE IF NOT EXISTS `quiz` (
 -- A tábla adatainak kiíratása `quiz`
 --
 
-INSERT INTO `quiz` (`kerdes_id`, `kerdes`, `valasz_A`, `valasz_B`, `valasz_C`, `valasz_D`) VALUES
-(1, 'Mi a fényerősség SI mértékegysége?', 'kandela', 'lumen', 'lux', 'farad'),
-(2, 'Ki dolgozta ki a kvantumelméletet?', 'Werner Heisenberg', 'Erwin Schrödinger', 'Max Planck', 'Max Born'),
-(3, 'Hányas számrendszer a bináris számrendszer?', 'tizes', 'hetes', 'tizenkettes', 'kettes');
+INSERT INTO `quiz` (`kerdes_id`, `kerdes`, `valasz_A`, `valasz_B`, `valasz_C`, `valasz_D`, `helyes`) VALUES
+(1, 'Mi a fényerősség SI mértékegysége?', 'kandela', 'lumen', 'lux', 'farad', 'kandela'),
+(2, 'Ki dolgozta ki a kvantumelméletet?', 'Werner Heisenberg', 'Erwin Schrödinger', 'Max Planck', 'Max Born', 'Max Planck'),
+(3, 'Hányas számrendszer a bináris számrendszer?', 'tizes', 'hetes', 'tizenkettes', 'kettes', 'kettes');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
